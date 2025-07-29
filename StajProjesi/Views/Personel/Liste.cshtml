@@ -1,0 +1,59 @@
+﻿@model List<StajProjesi.Models.Personeller>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Eğer Layout varsa
+    ViewBag.Title = "Personel Listesi";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Personel Listesi</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Telefon</th>
+                <th>Email</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personel in Model)
+            {
+                <tr>
+                    <td>@personel.Ad</td>
+                    <td>@personel.Soyad</td>
+                    <td>@personel.Telefon</td>
+                    <td>@personel.Email</td>
+                    <td>
+                        <a href="/Personel/Edit/@personel.PersonelId" class="btn btn-sm btn-warning">Düzenle</a>
+                        <button class="btn btn-sm btn-danger silBtn" data-id="@personel.PersonelId">Sil</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).on('click', '.silBtn', function () {
+        if (!confirm("Bu personeli silmek istediğinize emin misiniz?")) return;
+
+        var id = $(this).data("id");
+        $.ajax({
+            url: '/Personel/Delete',
+            type: 'POST',
+            data: { id: id },
+            success: function () {
+                location.reload();
+            },
+            error: function () {
+                alert("Silme işlemi başarısız oldu.");
+            }
+        });
+    });
+</script>

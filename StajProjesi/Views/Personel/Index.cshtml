@@ -1,0 +1,330 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
+
+    <style>
+        .text {
+            display: flex;
+        }
+
+        .form-label-custom {
+            color: black;
+        }
+
+        .resim {
+            color: blue;
+            border-radius: 5px;
+        }
+
+        .image {
+            max-width: 200px;
+        }
+
+        .pdf-preview {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container m-auto">
+        <h1 class="text-center my-5">Başvuru Ekranı</h1>
+
+        <!-- Form Alanları -->
+        <div class="row my-3"><div class="col-1"><label class="form-label form-label-custom">Ad</label></div><div class="col-11"><input type="text" class="form-control" id="ad" /></div></div>
+        <div class="row my-3"><div class="col-1"><label class="form-label form-label-custom">Soyad</label></div><div class="col-11"><input type="text" class="form-control" id="soyad" /></div></div>
+        <div class="row my-3"><div class="col-1"><label class="form-label form-label-custom">Doğum Tarihi</label></div><div class="col-11"><input type="date" class="form-control" id="dogum" /></div></div>
+        <div class="row my-3">
+            <div class="col-1"><label class="form-label form-label-custom">Medeni Durum</label></div><div class="col-11">
+                <select class="form-control" id="medeni">
+                    <option value="">Durum Seçiniz</option>
+                    <option value="Bekar">Bekar</option>
+                    <option value="Evli">Evli</option>
+                    <option value="Boşanmış">Boşanmış</option>
+                </select>
+            </div>
+        </div>
+        <div class="row my-3"><div class="col-1"><label class="form-label form-label-custom">Adres</label></div><div class="col-11"><input type="text" class="form-control" id="adres" /></div></div>
+        <div class="row my-3"><div class="col-1"><label class="form-label form-label-custom">Telefon</label></div><div class="col-11"><input type="text" class="form-control" id="telefon" /></div></div>
+        <div class="row my-3"><div class="col-1"><label class="form-label form-label-custom">E-Mail</label></div><div class="col-11"><input type="email" class="form-control" id="email" /></div></div>
+        <div class="row my-3">
+            <div class="col-1"><label class="form-label form-label-custom">Cinsiyet</label></div><div class="col-11">
+                <select class="form-control" id="cinsiyet">
+                    <option value="">Cinsiyet Seçiniz</option>
+                    <option value="Erkek">Erkek</option>
+                    <option value="Kadın">Kadın</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Okul Bilgisi -->
+        <h3 class="mt-5">Okul Bilgisi</h3>
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>Okul Adı</th>
+                    <th>Bölüm Adı</th>
+                    <th>Mezuniyet Yılı</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody id="okulTable">
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Okul Adı" /></td>
+                    <td><input type="text" class="form-control" placeholder="Bölüm Adı" /></td>
+                    <td><input type="text" class="form-control" placeholder="Mezuniyet Yılı" /></td>
+                    <td><button class="btn btn-danger btn-sm btn-sil">Sil</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary w-25 mb-5" id="okulEkle">Yeni Okul Ekle</button>
+
+        <!-- İş Geçmişi -->
+        <h3 class="mt-5">İş Geçmişi</h3>
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>Firma Adı</th>
+                    <th>Pozisyon</th>
+                    <th>Başlangıç</th>
+                    <th>Bitiş</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="Firma Adı" /></td>
+                    <td><input type="text" class="form-control" placeholder="Pozisyon" /></td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><input type="date" class="form-control" /></td>
+                    <td><button class="btn btn-danger btn-sm btn-sil">Sil</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary w-25 mb-5" id="isEkle">İş Bilgisi Ekle</button>
+
+        <h3>Resim Yükle</h3>
+        <input type="file" class="form-control w-25 mb-2" id="imageUpload" accept=".jpg,.png" />
+        <input type="hidden" id="imageFilePath" />
+        <div id="imagePreview" class="mt-3"></div>
+
+        <h3>PDF Yükle</h3>
+        <input type="file" class="form-control w-25 mb-2" id="pdfUpload" accept=".pdf" />
+        <input type="hidden" id="pdfFilePath" />
+        <div id="pdfPreview" class="mt-3"></div>
+
+
+        <!-- Gönder Butonu -->
+        <div class="row my-5">
+            <div class="col-12 d-flex justify-content-center">
+                <input type="button" class="btn btn-success w-50" value="Gönder" id="gonder" />
+            </div>
+        </div>
+
+        <!-- Düzenle Butonu -->
+        <div class="row my-3">
+            <div class="col-12 d-flex justify-content-center">
+                <button class="btn btn-warning w-50" id="duzenleBtn">Düzenle</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Okul ekleme
+            $('#okulEkle').click(function () {
+            const newRow = `
+            <tr>
+                <td><input type="text" class="form-control" placeholder="Okul Adı" /></td>
+                <td><input type="text" class="form-control" placeholder="Bölüm Adı" /></td>
+                <td><input type="text" class="form-control" placeholder="Mezuniyet Yılı" /></td>
+                <td><button class="btn btn-danger btn-sm btn-sil">Sil</button></td>
+            </tr>`;
+            $('#okulTable').append(newRow);
+        });
+
+            // İş geçmişi ekleme
+            $('#isEkle').click(function () {
+            const newRow = `
+            <tr>
+                <td><input type="text" class="form-control" placeholder="Firma Adı" /></td>
+                <td><input type="text" class="form-control" placeholder="Pozisyon" /></td>
+                <td><input type="date" class="form-control" /></td>
+                <td><input type="date" class="form-control" /></td>
+                <td><button class="btn btn-danger btn-sm btn-sil">Sil</button></td>
+            </tr>`;
+            $('#tableBody').append(newRow);
+        });
+
+            // Sil butonu
+            $(document).on('click', '.btn-sil', function () {
+                $(this).closest('tr').remove();
+        });
+
+            // Genel dosya yükleme fonksiyonu
+            function uploadFile(file, hiddenInputId, callback) {
+            const formData = new FormData();
+            formData.append("file", file);
+
+            $.ajax({
+                url: '/Personel/SaveFile',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (filePath) {
+                $(hiddenInputId).val(filePath);
+            if (callback) callback(filePath);
+                },
+            error: function () {
+                alert("Dosya yüklenirken hata oluştu.");
+                }
+            });
+        }
+
+            // Resim yükleme ve önizleme
+            $('#imageUpload').on('change', function () {
+            const file = this.files[0];
+            const preview = $('#imagePreview');
+            preview.empty();
+            if (!file) return;
+
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.html(`<img src="${e.target.result}" class="image mt-2" />`);
+                };
+            reader.readAsDataURL(file);
+            }
+
+            uploadFile(file, '#imageFilePath');
+        });
+
+            // PDF yükleme ve önizleme
+            $('#pdfUpload').on('change', function () {
+            const file = this.files[0];
+            const preview = $('#pdfPreview');
+            preview.empty();
+            if (!file) return;
+
+            if (file.type === 'application/pdf') {
+                const fileURL = URL.createObjectURL(file);
+            preview.html(`<embed src="${fileURL}" class="pdf-preview" type="application/pdf" />`);
+            }
+
+            uploadFile(file, '#pdfFilePath');
+        });
+
+            // Gönder butonu
+            $('#gonder').click(function () {
+            const personel = {
+                Ad: $('#ad').val(),
+            Soyad: $('#soyad').val(),
+            DogumTarihi: $('#dogum').val(),
+            MedeniDurum: $('#medeni').val(),
+            Adres: $('#adres').val(),
+            Telefon: $('#telefon').val(),
+            Email: $('#email').val(),
+            Cinsiyet: $('#cinsiyet').val(),
+            OkulBilgileri: [],
+            IsGecmisi: [],
+            Dosyalar: []
+            };
+
+            // Okul bilgileri
+            $('#okulTable tr').each(function () {
+                const tds = $(this).find('td');
+                if (tds.length >= 3) {
+                    const okulAdi = tds.eq(0).find('input').val();
+            const bolumAdi = tds.eq(1).find('input').val();
+            const mezuniyetYili = tds.eq(2).find('input').val();
+            if (okulAdi || bolumAdi || mezuniyetYili) {
+                personel.OkulBilgileri.push({
+                    OkulAdi: okulAdi,
+                    BolumAdi: bolumAdi,
+                    MezuniyetYili: mezuniyetYili ? parseInt(mezuniyetYili) : null
+                });
+                    }
+                }
+            });
+
+            // İş geçmişi
+            $('#tableBody tr').each(function () {
+                const tds = $(this).find('td');
+                if (tds.length >= 4) {
+                    const firmaAdi = tds.eq(0).find('input').val();
+            const pozisyon = tds.eq(1).find('input').val();
+            const baslangic = tds.eq(2).find('input').val();
+            const bitis = tds.eq(3).find('input').val();
+            if (firmaAdi || pozisyon || baslangic || bitis) {
+                personel.IsGecmisi.push({
+                    FirmaAdi: firmaAdi,
+                    Pozisyon: pozisyon,
+                    BaslangicTarihi: baslangic,
+                    BitisTarihi: bitis
+                });
+                    }
+                }
+            });
+
+            // Dosya bilgisi (resim ve pdf ayrı ayrı)
+            const imagePath = $('#imageFilePath').val();
+            const pdfPath = $('#pdfFilePath').val();
+
+            if (imagePath) {
+                const fileName = imagePath.split('/').pop();
+            personel.Dosyalar.push({
+                DosyaAdi: fileName,
+            DosyaTuru: fileName.split('.').pop(),
+            DosyaYolu: imagePath,
+            YuklenmeTarihi: new Date()
+                });
+            }
+
+            if (pdfPath) {
+                const fileName = pdfPath.split('/').pop();
+            personel.Dosyalar.push({
+                DosyaAdi: fileName,
+            DosyaTuru: fileName.split('.').pop(),
+            DosyaYolu: pdfPath,
+            YuklenmeTarihi: new Date()
+                });
+            }
+
+            // AJAX ile kaydet
+            $.ajax({
+                url: '/Personel/SavePersonel',
+            type: 'POST',
+            data: JSON.stringify(personel),
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                    if (response.success) {
+                alert("Başarıyla kaydedildi!");
+            window.location.href = '/Personel/Liste';
+                    } else {
+                alert("Hata: " + response.error);
+                    }
+                },
+            error: function () {
+                alert("Sunucu hatası oluştu.");
+                }
+            });
+        });
+
+            // Düzenle butonu
+            $('#duzenleBtn').click(function () {
+                window.location.href = '/Personel/Liste';
+        });
+    </script>
+
+    
+</body>
+</html>

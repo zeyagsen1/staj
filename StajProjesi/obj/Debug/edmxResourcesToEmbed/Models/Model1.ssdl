@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IKProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dosyalar">
+    <Key>
+      <PropertyRef Name="DosyaId" />
+    </Key>
+    <Property Name="DosyaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonelId" Type="int" Nullable="false" />
+    <Property Name="DosyaYolu" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="YüklenmeTarihi" Type="datetime" />
+    <Property Name="DosyaTuru" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DosyaAdi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="IsGecmisi">
+    <Key>
+      <PropertyRef Name="IsID" />
+    </Key>
+    <Property Name="IsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonelID" Type="int" />
+    <Property Name="FirmaAdi" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pozisyon" Type="nvarchar" MaxLength="100" />
+    <Property Name="BaslangicTarihi" Type="date" />
+    <Property Name="BitisTarihi" Type="date" />
+  </EntityType>
+  <EntityType Name="OkulBilgileri">
+    <Key>
+      <PropertyRef Name="OkulId" />
+    </Key>
+    <Property Name="OkulId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonelId" Type="int" />
+    <Property Name="OkulAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="BolumAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="MezuniyetYili" Type="int" />
+  </EntityType>
+  <EntityType Name="Personeller">
+    <Key>
+      <PropertyRef Name="PersonelId" />
+    </Key>
+    <Property Name="PersonelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DogumTarihi" Type="date" />
+    <Property Name="MedeniDurum" Type="nvarchar" MaxLength="50" />
+    <Property Name="Adres" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cinsiyet" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Dosyalar__Person__534D60F1">
+    <End Role="Personeller" Type="Self.Personeller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dosyalar" Type="Self.Dosyalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personeller">
+        <PropertyRef Name="PersonelId" />
+      </Principal>
+      <Dependent Role="Dosyalar">
+        <PropertyRef Name="PersonelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IsGecmisi__Perso__4AB81AF0">
+    <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="IsGecmisi" Type="Self.IsGecmisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personeller">
+        <PropertyRef Name="PersonelId" />
+      </Principal>
+      <Dependent Role="IsGecmisi">
+        <PropertyRef Name="PersonelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OkulBilgi__Perso__46E78A0C">
+    <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OkulBilgileri" Type="Self.OkulBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personeller">
+        <PropertyRef Name="PersonelId" />
+      </Principal>
+      <Dependent Role="OkulBilgileri">
+        <PropertyRef Name="PersonelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IKProjectModelStoreContainer">
+    <EntitySet Name="Dosyalar" EntityType="Self.Dosyalar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IsGecmisi" EntityType="Self.IsGecmisi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OkulBilgileri" EntityType="Self.OkulBilgileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personeller" EntityType="Self.Personeller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Dosyalar__Person__534D60F1" Association="Self.FK__Dosyalar__Person__534D60F1">
+      <End Role="Personeller" EntitySet="Personeller" />
+      <End Role="Dosyalar" EntitySet="Dosyalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IsGecmisi__Perso__4AB81AF0" Association="Self.FK__IsGecmisi__Perso__4AB81AF0">
+      <End Role="Personeller" EntitySet="Personeller" />
+      <End Role="IsGecmisi" EntitySet="IsGecmisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OkulBilgi__Perso__46E78A0C" Association="Self.FK__OkulBilgi__Perso__46E78A0C">
+      <End Role="Personeller" EntitySet="Personeller" />
+      <End Role="OkulBilgileri" EntitySet="OkulBilgileri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

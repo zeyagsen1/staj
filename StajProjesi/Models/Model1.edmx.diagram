@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7668ceb9c70446c398f38f392208ab6c" Name="Diagram1">
+        <EntityTypeShape EntityType="IKProjectModel.Dosyalar" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IKProjectModel.IsGecmisi" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IKProjectModel.OkulBilgileri" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IKProjectModel.Personeller" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IKProjectModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="IKProjectModel.FK__Dosyalar__Person__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="IKProjectModel.FK__IsGecmisi__Perso__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="IKProjectModel.FK__OkulBilgi__Perso__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

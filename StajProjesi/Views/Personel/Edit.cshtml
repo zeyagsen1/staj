@@ -1,0 +1,314 @@
+﻿@model StajProjesi.Models.Personeller
+@using System.Linq;
+
+@{
+
+    Layout = null;
+    var cinsiyet = (Model.Cinsiyet ?? "").Trim().ToLower();
+    var dosya = ViewBag.dosya as StajProjesi.Models.Dosyalar;
+
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Personel Düzenle</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
+    <style>
+        .image {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Personel Düzenle</h2>
+
+        <input type="hidden" id="personelId" value="@Model.PersonelId" />
+
+        <!-- Kişisel Bilgiler -->
+        <div class="mb-3">
+            <label>Ad</label>
+            <input type="text" id="ad" class="form-control" value="@Model.Ad" />
+        </div>
+        <div class="mb-3">
+            <label>Soyad</label>
+            <input type="text" id="soyad" class="form-control" value="@Model.Soyad" />
+        </div>
+        <div class="mb-3">
+            <label>Doğum Tarihi</label>
+            <input type="date" id="dogum" class="form-control" value="@(Model.DogumTarihi?.ToString("yyyy-MM-dd"))" />
+        </div>
+        <div class="mb-3">
+            <label>Medeni Durum</label>
+            <select id="medeni" class="form-control">
+                <option value="">Seçiniz</option>
+                <option value="Bekar" @(Model.MedeniDurum == "Bekar" ? "selected" : "")>Bekar</option>
+                <option value="Evli" @(Model.MedeniDurum == "Evli" ? "selected" : "")>Evli</option>
+                <option value="Boşanmış" @(Model.MedeniDurum == "Boşanmış" ? "selected" : "")>Boşanmış</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Adres</label>
+            <input type="text" id="adres" class="form-control" value="@Model.Adres" />
+        </div>
+        <div class="mb-3">
+            <label>Telefon</label>
+            <input type="text" id="telefon" class="form-control" value="@Model.Telefon" />
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" id="email" class="form-control" value="@Model.Email" />
+        </div>
+        <div class="mb-3">
+            <label>Cinsiyet</label>
+            <select id="cinsiyet" class="form-control">
+                <option value="">Seçiniz</option>
+                <option value="Erkek" @(cinsiyet == "erkek" ? "selected" : "")>Erkek</option>
+                <option value="Kadın" @(cinsiyet == "kadın" ? "selected" : "")>Kadın</option>
+            </select>
+        </div>
+
+        <!-- Okul Bilgileri -->
+        <h4>Okul Bilgileri</h4>
+        <table class="table" id="okulTable">
+            <thead>
+                <tr><th>Okul Adı</th><th>Bölüm</th><th>Mezuniyet</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var okul in Model.OkulBilgileri)
+                {
+                    <tr>
+                        <td><input type="text" class="form-control" value="@okul.OkulAdi" /></td>
+                        <td><input type="text" class="form-control" value="@okul.BolumAdi" /></td>
+                        <td><input type="text" class="form-control" value="@okul.MezuniyetYili" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button id="okulEkle" class="btn btn-sm btn-secondary">Yeni Okul Ekle</button>
+
+        <!-- İş Geçmişi -->
+        <h4 class="mt-4">İş Geçmişi</h4>
+        <table class="table" id="isTable">
+            <thead>
+                <tr><th>Firma</th><th>Pozisyon</th><th>Başlangıç</th><th>Bitiş</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var isg in Model.IsGecmisi)
+                {
+                    <tr>
+                        <td><input type="text" class="form-control" value="@isg.FirmaAdi" /></td>
+                        <td><input type="text" class="form-control" value="@isg.Pozisyon" /></td>
+                        <td><input type="date" class="form-control" value="@(isg.BaslangicTarihi?.ToString("yyyy-MM-dd"))" /></td>
+                        <td><input type="date" class="form-control" value="@(isg.BitisTarihi?.ToString("yyyy-MM-dd"))" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button id="isEkle" class="btn btn-sm btn-secondary">Yeni İş Ekle</button>
+
+        <!-- Dosya -->
+        <div class="mb-3 mt-4">
+            <label>Mevcut Dosya</label><br />
+            @if (Model != null)
+            {
+
+                var model = Model.Dosyalar;
+
+                var uzanti = System.IO.Path.GetExtension(dosya.DosyaYolu)?.ToLower();
+                if (uzanti == ".pdf")
+                {
+                    <embed src="@Url.Content(dosya.DosyaYolu)" type="application/pdf" width="200px" height="200px" />
+                }
+                else
+                {
+                    <img id="guncelResim" src="@Url.Content(dosya.DosyaYolu)" class="image" />
+                }
+            }
+        </div>
+
+        <div class="mb-3">
+            <label>Yeni Resim Yükle</label>
+            <input type="file" id="imageUpload" class="form-control" accept="image/*" />
+            <div id="imagePreview" class="mt-2"></div>
+        </div>
+
+
+        <div class="mb-3">
+            <label>Yeni PDF Yükle</label>
+            <input type="file" id="pdfUpload" class="form-control" accept="application/pdf" />
+            <div id="pdfPreview" class="mt-2"></div>
+        </div>
+
+
+
+        <div class="text-center mt-4">
+            <button id="guncelle" class="btn btn-success">Güncelle</button>
+        </div>
+    </div>
+
+    <script>
+        // Okul Ekle
+        $('#okulEkle').click(function () {
+            $('#okulTable tbody').append(`
+                    <tr>
+                        <td><input type="text" class="form-control" /></td>
+                        <td><input type="text" class="form-control" /></td>
+                        <td><input type="text" class="form-control" /></td>
+                    </tr>`);
+        });
+
+        // İş Ekle
+        $('#isEkle').click(function () {
+            $('#isTable tbody').append(`
+                    <tr>
+                        <td><input type="text" class="form-control" /></td>
+                        <td><input type="text" class="form-control" /></td>
+                        <td><input type="date" class="form-control" /></td>
+                        <td><input type="date" class="form-control" /></td>
+                    </tr>`);
+        });
+
+        // Ortak dosya yükleme fonksiyonu
+        function uploadFile(formData, callback) {
+            $.ajax({
+                url: '/Personel/SaveFile',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (filePath) {
+                    if (typeof callback === "function") {
+                        callback(filePath);
+                    }
+                },
+                error: function () {
+                    alert("Dosya yüklenirken hata oluştu.");
+                }
+            });
+        }
+
+        // Görsel yükleme
+        $('#imageUpload').on('change', function () {
+            const file = this.files[0];
+            const preview = $('#imagePreview');
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.html(`<img src="${e.target.result}" class="image" />`);
+            };
+            reader.readAsDataURL(file);
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            uploadFile(formData, function (filePath) {
+                $('#hiddenImagePath').val(filePath);
+            });
+        });
+
+        // PDF yükleme
+        $('#pdfUpload').on('change', function () {
+            const file = this.files[0];
+            const preview = $('#pdfPreview');
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.html(`<embed src="${e.target.result}" type="application/pdf" width="300px" height="300px" />`);
+            };
+            reader.readAsDataURL(file);
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            uploadFile(formData, function (filePath) {
+                $('#hiddenPdfPath').val(filePath);
+            });
+        });
+
+        // Güncelleme işlemi
+        $('#guncelle').click(function () {
+            const personel = {
+                PersonelId: parseInt($('#personelId').val()),
+                Ad: $('#ad').val(),
+                Soyad: $('#soyad').val(),
+                DogumTarihi: $('#dogum').val(),
+                MedeniDurum: $('#medeni').val(),
+                Adres: $('#adres').val(),
+                Telefon: $('#telefon').val(),
+                Email: $('#email').val(),
+                Cinsiyet: $('#cinsiyet').val(),
+                OkulBilgileri: [],
+                IsGecmisi: [],
+                Dosyalar: []
+            };
+
+            $('#okulTable tbody tr').each(function () {
+                const tds = $(this).find('td');
+                personel.OkulBilgileri.push({
+                    OkulAdi: $(tds[0]).find('input').val(),
+                    BolumAdi: $(tds[1]).find('input').val(),
+                    MezuniyetYili: parseInt($(tds[2]).find('input').val()) || null
+                });
+            });
+
+            $('#isTable tbody tr').each(function () {
+                const tds = $(this).find('td');
+                personel.IsGecmisi.push({
+                    FirmaAdi: $(tds[0]).find('input').val(),
+                    Pozisyon: $(tds[1]).find('input').val(),
+                    BaslangicTarihi: $(tds[2]).find('input').val(),
+                    BitisTarihi: $(tds[3]).find('input').val()
+                });
+            });
+
+            const imagePath = $('#hiddenImagePath').val();
+            const pdfPath = $('#hiddenPdfPath').val();
+
+            if (imagePath) {
+                personel.Dosyalar.push({
+                    DosyaAdi: imagePath.split('/').pop(),
+                    DosyaTuru: imagePath.split('.').pop(),
+                    DosyaYolu: imagePath,
+                    YuklenmeTarihi: new Date()
+                });
+            }
+
+            if (pdfPath) {
+                personel.Dosyalar.push({
+                    DosyaAdi: pdfPath.split('/').pop(),
+                    DosyaTuru: pdfPath.split('.').pop(),
+                    DosyaYolu: pdfPath,
+                    YuklenmeTarihi: new Date()
+                });
+            }
+
+            $.ajax({
+                url: '/Personel/UpdatePersonel',
+                type: 'POST',
+                data: JSON.stringify(personel),
+                contentType: 'application/json; charset=utf-8',
+                success: function (res) {
+                    if (res.success) {
+                        alert("Güncelleme başarılı!");
+                        window.location.href = "/Personel";
+                    } else {
+                        alert("Hata: " + res.error);
+                    }
+                },
+                error: function () {
+                    alert("Sunucu hatası oluştu.");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

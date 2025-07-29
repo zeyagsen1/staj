@@ -1,0 +1,62 @@
+﻿@model IEnumerable<StajProjesi.Models.Personeller>
+
+@{
+    ViewBag.Title = "Personel Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Adjust if needed
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Personel Listesi</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+                <th>Doğum Tarihi</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personel in Model)
+            {
+                <tr>
+                    <td>@personel.Ad</td>
+                    <td>@personel.Soyad</td>
+                    <td>@personel.Email</td>
+                    <td>@(personel.DogumTarihi?.ToString("dd.MM.yyyy"))</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="@personel.PersonelId">Sil</button>
+                        <button class="btn btn-primary edit-btn" data-id="@personel.PersonelId">Düzenle</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+
+<script>
+    // Delete button handler
+    $(document).on('click', '.delete-btn', function () {
+        var id = $(this).data('id');
+        if (confirm('Bu personeli silmek istediğinize emin misiniz?')) {
+            $.post('/Personel/Delete', { id: id }, function () {
+                location.reload(); // Refresh list after deletion
+            });
+        }
+    });
+
+    // Düzenle (Edit) button handler
+    $(document).on('click', '.edit-btn', function () {
+        var id = $(this).data('id');
+        window.location.href = '/Personel/Edit/' + id; // Redirect to edit page
+    });
+</script>
+
