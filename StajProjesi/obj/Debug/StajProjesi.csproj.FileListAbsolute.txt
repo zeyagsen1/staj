@@ -1,5 +1,3 @@
-C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\obj\Debug\StajProjesi.csproj.AssemblyReference.cache
-C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\obj\Debug\StajProjesi.csproj.CoreCompileInputs.cache
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\bin\StajProjesi.dll.config
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\bin\StajProjesi.dll
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\bin\StajProjesi.pdb
@@ -78,6 +76,8 @@ C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\bin\System.Web.WebPages.Razo
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\bin\Newtonsoft.Json.xml
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\bin\Antlr3.Runtime.pdb
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\obj\Debug\StajProjesi.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\obj\Debug\StajProjesi.csproj.CoreCompileInputs.cache
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\obj\Debug\StajProj.061209AA.Up2Date
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\obj\Debug\StajProjesi.dll
 C:\Users\ibrah\source\repos\StajProjesi\StajProjesi\obj\Debug\StajProjesi.pdb

@@ -1,14 +1,8 @@
-﻿@model StajProjesi.Models.Personeller
-@using System.Linq;
-
-@{
-
+﻿@{
     Layout = null;
     var cinsiyet = (Model.Cinsiyet ?? "").Trim().ToLower();
-    var dosya = ViewBag.dosya as StajProjesi.Models.Dosyalar;
-
 }
-
+@model StajProjesi.Models.Personeller
 
 <!DOCTYPE html>
 <html>
@@ -115,11 +109,11 @@
         <!-- Dosya -->
         <div class="mb-3 mt-4">
             <label>Mevcut Dosya</label><br />
-            @if (Model != null)
+            @if (Model.Dosyalar?.FirstOrDefault() != null)
             {
 
-                var model = Model.Dosyalar;
 
+                var dosya = Model.Dosyalar.First();
                 var uzanti = System.IO.Path.GetExtension(dosya.DosyaYolu)?.ToLower();
                 if (uzanti == ".pdf")
                 {
@@ -132,19 +126,21 @@
             }
         </div>
 
+        <!-- Resim Yükle -->
         <div class="mb-3">
             <label>Yeni Resim Yükle</label>
-            <input type="file" id="imageUpload" class="form-control" accept="image/*" />
+            <input type="file" id="imageUpload" class="form-control" accept=".jpeg, .jpg, .png" />
+            <input type="hidden" id="hiddenImagePath" value="@Model.Dosyalar?.FirstOrDefault(d => d.DosyaTuru == " jpeg" || d.DosyaTuru= ="jpg" || d.DosyaTuru= ="png" )?.DosyaYolu" />
             <div id="imagePreview" class="mt-2"></div>
         </div>
 
-
+        <!-- PDF Yükle -->
         <div class="mb-3">
             <label>Yeni PDF Yükle</label>
-            <input type="file" id="pdfUpload" class="form-control" accept="application/pdf" />
+            <input type="file" id="pdfUpload" class="form-control" accept=".pdf" />
+            <input type="hidden" id="hiddenPdfPath" value="@Model.Dosyalar?.FirstOrDefault(d => d.DosyaTuru == " pdf")?.DosyaYolu" />
             <div id="pdfPreview" class="mt-2"></div>
         </div>
-
 
 
         <div class="text-center mt-4">
@@ -174,8 +170,31 @@
                     </tr>`);
         });
 
-        // Ortak dosya yükleme fonksiyonu
-        function uploadFile(formData, callback) {
+        // Dosya Yükleme
+        $('#fileUpload').on('change', function () {
+            const file = this.files[0];
+            const preview = $('#filePreview');
+
+            if (!file) return;
+
+            const fileType = file.type;
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                if (fileType.startsWith('image/')) {
+                    preview.html(`<img src="${e.target.result}" class="image" />`);
+                } else if (fileType === 'application/pdf') {
+                    preview.html(`<embed src="${e.target.result}" type="application/pdf" width="200px" height="200px" />`);
+                } else {
+                    preview.html('Önizleme desteklenmiyor.');
+                }
+            };
+
+            reader.readAsDataURL(file);
+
+            const formData = new FormData();
+            formData.append("file", file);
+
             $.ajax({
                 url: '/Personel/SaveFile',
                 type: 'POST',
@@ -183,53 +202,12 @@
                 processData: false,
                 contentType: false,
                 success: function (filePath) {
-                    if (typeof callback === "function") {
-                        callback(filePath);
-                    }
+                    $('#hiddenFilePath').val(filePath);
+                    $('#guncelResim').attr('src', filePath).show();
                 },
                 error: function () {
                     alert("Dosya yüklenirken hata oluştu.");
                 }
-            });
-        }
-
-        // Görsel yükleme
-        $('#imageUpload').on('change', function () {
-            const file = this.files[0];
-            const preview = $('#imagePreview');
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                preview.html(`<img src="${e.target.result}" class="image" />`);
-            };
-            reader.readAsDataURL(file);
-
-            const formData = new FormData();
-            formData.append("file", file);
-
-            uploadFile(formData, function (filePath) {
-                $('#hiddenImagePath').val(filePath);
-            });
-        });
-
-        // PDF yükleme
-        $('#pdfUpload').on('change', function () {
-            const file = this.files[0];
-            const preview = $('#pdfPreview');
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                preview.html(`<embed src="${e.target.result}" type="application/pdf" width="300px" height="300px" />`);
-            };
-            reader.readAsDataURL(file);
-
-            const formData = new FormData();
-            formData.append("file", file);
-
-            uploadFile(formData, function (filePath) {
-                $('#hiddenPdfPath').val(filePath);
             });
         });
 
@@ -269,23 +247,12 @@
                 });
             });
 
-            const imagePath = $('#hiddenImagePath').val();
-            const pdfPath = $('#hiddenPdfPath').val();
-
-            if (imagePath) {
+            const filePath = $('#hiddenFilePath').val();
+            if (filePath) {
                 personel.Dosyalar.push({
-                    DosyaAdi: imagePath.split('/').pop(),
-                    DosyaTuru: imagePath.split('.').pop(),
-                    DosyaYolu: imagePath,
-                    YuklenmeTarihi: new Date()
-                });
-            }
-
-            if (pdfPath) {
-                personel.Dosyalar.push({
-                    DosyaAdi: pdfPath.split('/').pop(),
-                    DosyaTuru: pdfPath.split('.').pop(),
-                    DosyaYolu: pdfPath,
+                    DosyaAdi: filePath.split('/').pop(),
+                    DosyaTuru: filePath.split('.').pop(),
+                    DosyaYolu: filePath,
                     YuklenmeTarihi: new Date()
                 });
             }
@@ -303,12 +270,11 @@
                         alert("Hata: " + res.error);
                     }
                 },
-                error: function () {
+                error: function (xhr, status, error) {
                     alert("Sunucu hatası oluştu.");
                 }
             });
         });
     </script>
-
 </body>
 </html>

@@ -199,7 +199,7 @@ namespace StajProjesi.Controllers
                 // Dosyaları güncelle
                 if (personel.Dosyalar != null && personel.Dosyalar.Any())
                 {
-                    db.Dosyalar.RemoveRange(existing.Dosyalar);
+                    
 
                     foreach (var dosya in personel.Dosyalar)
                     {

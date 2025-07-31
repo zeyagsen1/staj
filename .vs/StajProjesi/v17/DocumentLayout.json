@@ -3,23 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|c:\\users\\ibrah\\source\\repos\\stajprojesi\\stajprojesi\\views\\personel\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\views\\personel\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\models\\dosyalar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\models\\dosyalar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\views\\personel\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|c:\\users\\ibrah\\source\\repos\\stajprojesi\\stajprojesi\\views\\personel\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\views\\personel\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -27,16 +11,8 @@
       "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\controllers\\personelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\models\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\models\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\models\\model1.tt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\models\\model1.tt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|C:\\Users\\ibrah\\source\\repos\\StajProjesi\\stajprojesi\\views\\personel\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{10DAC251-7CDF-49EF-BD82-7C9668BB8C2C}|StajProjesi\\StajProjesi.csproj|solutionrelative:stajprojesi\\views\\personel\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,117 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Web.config",
-              "RelativeDocumentMoniker": "StajProjesi\\Web.config",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Web.config",
-              "RelativeToolTip": "StajProjesi\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-07-29T07:56:52.038Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Model1.Context.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Models\\Model1.Context.cs",
-              "RelativeDocumentMoniker": "StajProjesi\\Models\\Model1.Context.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Models\\Model1.Context.cs",
-              "RelativeToolTip": "StajProjesi\\Models\\Model1.Context.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAuwBUAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-29T07:43:26.801Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BundleConfig.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\App_Start\\BundleConfig.cs",
-              "RelativeDocumentMoniker": "StajProjesi\\App_Start\\BundleConfig.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\App_Start\\BundleConfig.cs",
-              "RelativeToolTip": "StajProjesi\\App_Start\\BundleConfig.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBIAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-29T07:43:13.855Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Dosyalar.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Models\\Dosyalar.cs",
-              "RelativeDocumentMoniker": "StajProjesi\\Models\\Dosyalar.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Models\\Dosyalar.cs",
-              "RelativeToolTip": "StajProjesi\\Models\\Dosyalar.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAhwA4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-29T07:40:59.382Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Views\\Personel\\Edit.cshtml",
               "RelativeDocumentMoniker": "StajProjesi\\Views\\Personel\\Edit.cshtml",
               "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Views\\Personel\\Edit.cshtml",
               "RelativeToolTip": "StajProjesi\\Views\\Personel\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAmwIcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-24T06:49:21.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T06:49:21.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "PersonelController.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Controllers\\PersonelController.cs",
               "RelativeDocumentMoniker": "StajProjesi\\Controllers\\PersonelController.cs",
               "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Controllers\\PersonelController.cs",
               "RelativeToolTip": "StajProjesi\\Controllers\\PersonelController.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAgwJYAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAmwKYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-14T10:15:17.91Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Views\\Web.config",
-              "RelativeDocumentMoniker": "StajProjesi\\Views\\Web.config",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Views\\Web.config",
-              "RelativeToolTip": "StajProjesi\\Views\\Web.config",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-07-29T07:57:08.368Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Views\\Personel\\Index.cshtml",
               "RelativeDocumentMoniker": "StajProjesi\\Views\\Personel\\Index.cshtml",
               "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Views\\Personel\\Index.cshtml",
               "RelativeToolTip": "StajProjesi\\Views\\Personel\\Index.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwB0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAL4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-14T10:15:54.189Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Model1.tt",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Models\\Model1.tt",
-              "RelativeDocumentMoniker": "StajProjesi\\Models\\Model1.tt",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\StajProjesi\\StajProjesi\\Models\\Model1.tt",
-              "RelativeToolTip": "StajProjesi\\Models\\Model1.tt",
-              "ViewState": "AgIAAKMAAAAAAAAAAAAYwAgBAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-07-29T07:43:32.974Z"
+              "WhenOpened": "2025-07-14T10:15:54.189Z",
+              "EditorCaption": ""
             }
           ]
         }
